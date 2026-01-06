@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Shapes {
+protected:
+    int a;
+    int b;
+public:
+    void getData(int n, int m) {
+        a = n;
+        b = m;
+    }
+};
+
+// Rectangle class
+class Rectangle : public Shapes {
+public:
+    int area() {
+        return a * b;
+    }
+};
+
+// Triangle class
+class Triangle : public Shapes {
+public:
+    double area() {
+        return 0.5 * a * b;
+    }
+};
+
+int main() {
+    Rectangle rect;
+    Triangle tri;
+
+    int length, width, base, height;
+
+    // Rectangle input
+    cout << "Enter length and width of rectangle: ";
+    cin >> length >> width;
+    rect.getData(length, width);
+    cout << "The area of rectangle is: " << rect.area() << endl;
+
+    // Triangle input
+    cout << "Enter base and height of triangle: ";
+    cin >> base >> height;
+    tri.getData(base, height);
+    cout << "The area of triangle is: " << tri.area() << endl;
+
+    return 0;
+}
