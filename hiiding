@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class student {
+    int reg;
+    int depart;
+
+public:
+    void get() {
+        cout << "enter your registration number" << endl;
+        cin >> reg;
+        cout << "enter your department" << endl;
+        cin >> depart;
+    }
+
+    void display() {
+        cout << "your registration number is " << reg << endl;
+        cout << "your department is " << depart << endl;
+    }
+};
+
+class lecture : public student {
+    string course;
+    int staff_id;
+
+public:
+    void get() {
+        student::get();   // ✅ call base class get
+        cout << "enter the lecturer course" << endl;
+        cin >> course;
+        cout << "enter your staff id" << endl;
+        cin >> staff_id;
+    }
+
+    void display() {
+        student::display();  // ✅ call base class display
+        cout << "lecturer course is: " << course << endl;
+        cout << "staff id is: " << staff_id << endl;
+    }
+};
+
+int main() {
+    lecture lect;
+    lect.get();       // ✅ correct
+    lect.display();   // ✅ correct
+    return 0;
+}
